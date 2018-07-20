@@ -1,0 +1,52 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+
+  <ion-navbar id="nav">
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-label id="flabel" color="textcolor">Personal Information</ion-label>
+    <form (ngSubmit)="register()">
+    <ion-item>
+        <ion-label color="textcolor" stacked>First Name</ion-label>
+        <ion-input type="text" [(ngModel)]="user.first_name" name="first_name"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label color="textcolor" stacked>Last Name</ion-label>
+        <ion-input type="text" [(ngModel)]="user.last_name" name="last_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="textcolor" stacked>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-label id="flabel" color="textcolor">Credentials</ion-label>
+      <ion-item>
+          <ion-label color="textcolor" stacked>Username</ion-label>
+          <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
+        </ion-item>
+
+          <ion-item>
+              <ion-label color="textcolor" stacked>Password</ion-label>
+              <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+            </ion-item>
+
+          
+            <!-- <ion-item>
+                <ion-label color="textcolor" stacked>Confirm Password</ion-label>
+                <ion-input type="password" name="confirm_pass"></ion-input>
+              </ion-item> -->
+
+              <button ion-button block outline color="textcolor" type="submit">Register</button>
+            </form>
+</ion-content>
