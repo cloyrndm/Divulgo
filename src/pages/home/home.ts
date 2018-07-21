@@ -23,10 +23,12 @@ export class HomePage {
   }
 
   doGoogleLogin(){
-    let nav = this.navCtrl;
-    let env = this;
+    // let nav = this.navCtrl;
+    // let env = this;
 
-    this.googlePlus.login({})
+    this.googlePlus.login({
+      'webClientId': '987333508972-p1u4lmmeltk397tcmbtjsmmfgqtkc3hs.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
+    })
     .then(function (user) {
         this.RestProvider.addUser('user', {
            first_name: user.givenName,
@@ -36,7 +38,7 @@ export class HomePage {
            password: "none",
          })
       .then(function(){
-        nav.push(MainPage);
+        this.navCtrl.push(MainPage);
       }, function (error) {
         console.log(error);
       });
