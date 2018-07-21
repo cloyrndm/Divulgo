@@ -35,7 +35,11 @@
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-ionic-webview": "1.1.19",
     "cordova-plugin-ionic-keyboard": "2.0.5",
-    "cordova-android": "~7.0.0"
+    "cordova-android": "~7.0.0",
+    "cordova-plugin-geolocation": "~4.0.1",
+    "cordova-plugin-nativegeocoder": "~3.1.2",
+    "cordova-plugin-camera": "~4.0.3",
+    "cordova-plugin-googleplus": "~5.3.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.10",
