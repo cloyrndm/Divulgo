@@ -7,6 +7,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { HttpClientModule } from '@angular/common/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { GooglePlus } from '@ionic-native/google-plus';
+
 
 import { RestProvider } from '../providers/rest/rest';
 import { MyApp } from './app.component';
@@ -44,6 +46,7 @@ import {MainPage} from '../pages/main/main';
     NativeGeocoder,
     Camera,
     Geolocation,
+    GooglePlus,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider
   ]

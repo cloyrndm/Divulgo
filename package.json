@@ -53,7 +53,10 @@
         "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
       },
       "cordova-plugin-nativegeocoder": {},
-      "cordova-plugin-camera": {}
+      "cordova-plugin-camera": {},
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.987333508972-36b3laemupi6biqbc1mthlp604rushu5"
+      }
     },
     "platforms": [
       "android"
