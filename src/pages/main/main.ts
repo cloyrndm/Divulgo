@@ -31,17 +31,23 @@ export interface NativeGeocoderResultModel {
 })
 export class MainPage {
 imageURL
-lat
-long
+lat: any;
+long: any;
+s: any;
+c: any;
 
-complaintdetails = { user_id: '1', user_complaint: '', user_location: 'Cebu City'};
+complaintdetails = { user_id: this.navParams.get('id_'), user_complaint: '', user_location: 'Cebu City'};
   constructor( public restProvider: RestProvider, public navCtrl: NavController, public navParams: NavParams, public app: App,public geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public toaster: ToastController,private camera: Camera) {
     
   }
 
 submit(){
+  let _id: any;
     this.restProvider.addComplaint(this.
       complaintdetails).then((result) => {
+ //sample to pass data to another page, this is working
+  // _id = this.navParams.get('id_');
+  // console.log(_id);
   console.log(result);
 }, (err) => {
   console.log(err);
@@ -87,7 +93,8 @@ geolocate(){
 // .then((result: NativeGeocoderReverseResult[]) =>
 // {
 //   let newResult: NativeGeocoderResultModel = JSON.parse(JSON.stringify(result));
-//   var str : string   = ` ${newResult.street} in ${newResult.countryCode}`;
+//   this.s= newResult.street;
+//   this.c=newResult.countryCode;
 //   console.log(str)
 //   resolve(str);
 // })
