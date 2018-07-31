@@ -29,7 +29,7 @@ export class RestProvider {
   constructor(public http: HttpClient,private alertCtrl: AlertController) {
     console.log('Hello RestProvider Provider');
   }
-  
+
 //Register
   addUser(data) {
     return new Promise((resolve, reject) => {
@@ -79,6 +79,8 @@ export class RestProvider {
     })
   })
   }
+
+  
     }
 
 

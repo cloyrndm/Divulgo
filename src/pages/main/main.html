@@ -1,12 +1,25 @@
+<!-- segment headers -->
+<!-- <img src="assets/divulgo.png" style="width:120px;height:120px;" id="center"> -->
+<ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="complaints">
+          <ion-segment-button value="s_complaints">
+            Submit Complaints
+          </ion-segment-button>
+          <ion-segment-button value="v_complaints">
+            View Complaints
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+
 
 <ion-content padding>
-
-    <button ion-button clear icon-only (click)="logout()">
-        <ion-icon name="md-power"></ion-icon>
-    </button>
+        <div [ngSwitch]="complaints">
+                    <button ion-button clear icon-only (click)="logout()">
+                        <ion-icon name="md-power"></ion-icon>
+                    </button>
 
     <form (ngSubmit)="submit()">
-    <img src="assets/divulgo.png" style="width:120px;height:120px;" id="center">
+
     <ion-item>
         <ion-label color="textcolor" stacked>Complaint</ion-label>
         <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="complaintdetails.complaint" name="complaint"></ion-textarea>
@@ -28,5 +41,30 @@
      <hr>
     <button ion-button block outline color="textcolor" type="submit">Submit</button>
 </form>
+
+
+
+
+<!-- 2nd page -->
+        <div [ngSwitch]="complaints">
+          <ion-list *ngSwitchCase="'v_complaints'">
+            <ion-item>
+                <p>asdas</p>
+              <h2>Ruby</h2>
+            </ion-item>
+            <ion-item>
+                <p>asdas</p>
+              <h2>Oscar</h2>
+            </ion-item>
+            <ion-item>
+                    <p>asdas</p>
+                    <h2>Oscar</h2>
+            </ion-item>
+            <ion-item>
+                    <p>asdas</p>
+                    <h2>Oscar</h2>
+            </ion-item>
+          </ion-list>
+</div>
 </ion-content>
 
