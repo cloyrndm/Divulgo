@@ -9,11 +9,12 @@
             View Complaints
           </ion-segment-button>
         </ion-segment>
-      </ion-toolbar>
+</ion-toolbar>
 
 
 <ion-content padding>
         <div [ngSwitch]="complaints">
+                <ion-list *ngSwitchCase="'s_complaints'">
                     <button ion-button clear icon-only (click)="logout()">
                         <ion-icon name="md-power"></ion-icon>
                     </button>
@@ -41,12 +42,10 @@
      <hr>
     <button ion-button block outline color="textcolor" type="submit">Submit</button>
 </form>
-
-
-
+</ion-list>
 
 <!-- 2nd page -->
-        <div [ngSwitch]="complaints">
+      
           <ion-list *ngSwitchCase="'v_complaints'">
             <ion-item>
                 <p>asdas</p>
