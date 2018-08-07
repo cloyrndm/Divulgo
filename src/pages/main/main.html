@@ -1,69 +1,57 @@
-<!-- segment headers -->
-<!-- <img src="assets/divulgo.png" style="width:120px;height:120px;" id="center"> -->
-<ion-toolbar no-border-top>
-        <ion-segment [(ngModel)]="complaints">
-          <ion-segment-button value="s_complaints">
-            Submit Complaints
-          </ion-segment-button>
-          <ion-segment-button value="v_complaints">
-            View Complaints
-          </ion-segment-button>
+<ion-header>
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="complaint">
+            <ion-segment-button value="scomplaints">
+                Send 
+            </ion-segment-button>
+            <ion-segment-button value="vcomplaints" (click)="getComplaints();">
+                View
+            </ion-segment-button>
+            <ion-segment-button value="settings">
+                Settings
+            </ion-segment-button>
         </ion-segment>
-</ion-toolbar>
+    </ion-toolbar>
+</ion-header>
 
+<ion-content>
+    <div [ngSwitch]="complaint">
+        <ion-list *ngSwitchCase="'scomplaints'">
+                <img src="assets/divulgo.png" style="width:180px;height:180px;" id="center">
+            <form (ngSubmit)="submit()">
+                <ion-item>
+                    <ion-label color="textcolor" stacked>Complaint</ion-label>
+                    <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="complaintdetails.complaint" name="complaint"></ion-textarea>
+                </ion-item>
+<!-- 
+                <button ion-button clear icon-only id="md-compass" (click)="geolocate()">
+                    <ion-icon md="md-compass"></ion-icon>
+                </button> -->
 
-<ion-content padding>
-        <div [ngSwitch]="complaints">
-                <ion-list *ngSwitchCase="'s_complaints'">
-                    <button ion-button clear icon-only (click)="logout()">
-                        <ion-icon name="md-power"></ion-icon>
-                    </button>
+                <ion-item>
+                    <input type="hidden" value="Cebu City">
+                    <ion-label color="textcolor" stacked>Location: {{ lat }} , {{ long }}</ion-label>
+                </ion-item>
 
-    <form (ngSubmit)="submit()">
+                <button ion-button clear icon-only (click)="takePhoto()" id="cambtn">
+                    <ion-icon name="md-camera"></ion-icon>
+                </button>
+                <img [src]="imageURL" *ngIf="imageURL" />
+                <hr>
+                <button ion-button block outline color="textcolor" type="submit">Submit</button>
+            </form>
+        </ion-list>
 
-    <ion-item>
-        <ion-label color="textcolor" stacked>Complaint</ion-label>
-        <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="complaintdetails.complaint" name="complaint"></ion-textarea>
-    </ion-item>
-    
-    <button ion-button clear icon-only id="md-compass" (click)="geolocate()">
-        <ion-icon md="md-compass"></ion-icon>
-    </button>
-    
-    <ion-item>
-        <input type="hidden" value ="Cebu City">
-        <ion-label color="textcolor" stacked>Location: {{ lat }} , {{ long }}</ion-label>
-    </ion-item>
-
-    <button ion-button clear icon-only (click)="takePhoto()" id="cambtn">
-        <ion-icon name="md-camera"></ion-icon>
-    </button>
-     <img [src]="imageURL" *ngIf="imageURL" />
-     <hr>
-    <button ion-button block outline color="textcolor" type="submit">Submit</button>
-</form>
-</ion-list>
-
-<!-- 2nd page -->
-      
-          <ion-list *ngSwitchCase="'v_complaints'">
-            <ion-item>
-                <p>asdas</p>
-              <h2>Ruby</h2>
+        <ion-list *ngSwitchCase="'vcomplaints'">
+            <ion-item *ngFor ="let complaint of complaints">
+                <p>{{complaint.user_complaint}}</p>
             </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'settings'">
             <ion-item>
-                <p>asdas</p>
-              <h2>Oscar</h2>
+                <button ion-button block outline color="textcolor" (click)="logout();">Logout</button>
             </ion-item>
-            <ion-item>
-                    <p>asdas</p>
-                    <h2>Oscar</h2>
-            </ion-item>
-            <ion-item>
-                    <p>asdas</p>
-                    <h2>Oscar</h2>
-            </ion-item>
-          </ion-list>
-</div>
+        </ion-list>
+    </div>
 </ion-content>
-

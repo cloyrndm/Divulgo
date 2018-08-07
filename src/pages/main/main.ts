@@ -35,7 +35,7 @@ lat: any;
 long: any;
 s: any;
 c: any;
-
+complaints:any;
 complaintdetails = { user_id: this.navParams.get('id_'), user_complaint: '', user_location: 'Cebu City'};
   constructor( public restProvider: RestProvider, public navCtrl: NavController, public navParams: NavParams, public app: App,public geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public toaster: ToastController,private camera: Camera) {
     
@@ -57,6 +57,11 @@ submit(){
 
 
   takePhoto(){
+    let options1: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5
+  };
+
     const options : CameraOptions = {
       quality: 50, // picture quality
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -66,19 +71,7 @@ submit(){
    
     this.camera.getPicture(options).then((imageData) => {
        this.imageURL = imageData
-    }, (err) => {
-       console.log(err);
-    });
-  }
-
-
-geolocate(){
-  let options: NativeGeocoderOptions = {
-    useLocale: true,
-    maxResults: 5
-};
-
-    this.geolocation.getCurrentPosition().then((resp) => {
+        this.geolocation.getCurrentPosition().then((resp) => {
     this.lat= resp.coords.latitude
     this.long=resp.coords.longitude
     console.log(this.lat);
@@ -87,20 +80,54 @@ geolocate(){
        console.log('Error getting location', error);
      });
 
+return new Promise((resolve, reject) =>
+{
+this.nativeGeocoder.reverseGeocode(this.lat, this.long, options1)
+console.log(this.lat);
+console.log(this.long);
+})
+    }, (err) => {
+       console.log(err);
+    });
+  }
+
+  getComplaints(){
+    this.restProvider.getComplaints()
+    .then(data => {
+      this.complaints = data;
+      console.log(this.complaints);
+    });
+  }
+// onSuccess(result) {
+   
+
+//     }
+
+
+// onFail(message) {
+//     console.log('Failed because: ' + message);
+// }
+
+
+// geolocate(){
+
+
+//     this.geolocation.getCurrentPosition().then((resp) => {
+//     this.lat= resp.coords.latitude
+//     this.long=resp.coords.longitude
+//     console.log(this.lat);
+//     console.log(this.long);
+//      }).catch((error) => {
+//        console.log('Error getting location', error);
+//      });
+
 // return new Promise((resolve, reject) =>
 // {
 // this.nativeGeocoder.reverseGeocode(this.lat, this.long, options)
-// .then((result: NativeGeocoderReverseResult[]) =>
-// {
-//   let newResult: NativeGeocoderResultModel = JSON.parse(JSON.stringify(result));
-//   this.s= newResult.street;
-//   this.c=newResult.countryCode;
-//   console.log(str)
-//   resolve(str);
+// console.log(this.lat);
+// console.log(this.long);
 // })
-
-// })
-}
+// }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');

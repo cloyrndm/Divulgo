@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+// import { NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 import { AlertController } from 'ionic-angular';
@@ -24,8 +25,9 @@ export class RestProvider {
   // apiUrl2 = 'http://172.17.3.87:8080/apithree';
 
   //testing purposes
-  apiUrl = 'http://localhost:8080/apitwo';
-  apiUrl2 = 'http://localhost:8080/apithree';
+  apiUrl = 'http://172.20.10.10:8080/apitwo';
+  apiUrl2 = 'http://172.20.10.10:8080/apithree';
+  iddd:any;
   constructor(public http: HttpClient,private alertCtrl: AlertController) {
     console.log('Hello RestProvider Provider');
   }
@@ -66,6 +68,7 @@ export class RestProvider {
       //sample
       userid=data.id;
       console.log("before the userid");
+      this.iddd = userid;
       console.log(userid);
       resolve(userid);
       // resolve(data.id);
@@ -80,7 +83,18 @@ export class RestProvider {
   })
   }
 
-  
+  //getcomplaints
+  getComplaints() {
+    console.log("This is the get complaints");
+    console.log("getcomplaints id"+this.iddd);
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl2+'/complaints/'+this.iddd).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
     }
 
 

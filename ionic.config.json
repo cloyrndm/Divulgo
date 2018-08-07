@@ -4,16 +4,20 @@
   "type": "ionic-angular",
   "proxies": [
     {
-      "path": "/users",
-      "proxyUrl": "http://172.17.3.87:8080/apitwo/users"
+      "path":"/users",
+      "proxyUrl":"http://172.20.10.10:8080/apitwo/users"
     },
     {
       "path":"/complaints",
-      "proxyUrl":"http://172.17.3.87:8080/apithree/complaints"
+      "proxyUrl":"http://172.20.10.10:8080/apithree/complaints"
     },
     {
       "path":"/login",
-      "proxyUrl":"http://172.17.3.87:8080/apitwo/login"
+      "proxyUrl":"http://172.20.10.10:8080/apitwo/login"
+    },
+    {
+      "path":"/complaints/{user_id}",
+      "proxyUrl":"http://172.20.10.10:8080/apitwo/login"
     }
   ],
   "integrations": {

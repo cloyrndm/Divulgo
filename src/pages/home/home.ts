@@ -5,6 +5,7 @@ import {MainPage} from '../main/main';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { RestProvider } from '../../providers/rest/rest';
 import { AlertController } from 'ionic-angular';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
