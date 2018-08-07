@@ -98,36 +98,6 @@ console.log(this.long);
       console.log(this.complaints);
     });
   }
-// onSuccess(result) {
-   
-
-//     }
-
-
-// onFail(message) {
-//     console.log('Failed because: ' + message);
-// }
-
-
-// geolocate(){
-
-
-//     this.geolocation.getCurrentPosition().then((resp) => {
-//     this.lat= resp.coords.latitude
-//     this.long=resp.coords.longitude
-//     console.log(this.lat);
-//     console.log(this.long);
-//      }).catch((error) => {
-//        console.log('Error getting location', error);
-//      });
-
-// return new Promise((resolve, reject) =>
-// {
-// this.nativeGeocoder.reverseGeocode(this.lat, this.long, options)
-// console.log(this.lat);
-// console.log(this.long);
-// })
-// }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
