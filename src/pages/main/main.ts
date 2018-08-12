@@ -33,21 +33,22 @@ export class MainPage {
 imageURL
 lat: any;
 long: any;
+lattt: any;
+longgg: any;
 s: any;
 c: any;
 complaints:any;
-complaintdetails = { user_id: this.navParams.get('id_'), user_complaint: '', user_location: 'Cebu City'};
+complaint = { user_id: this.navParams.get('id_'), user_complaint: '', lattt:this.lat, longgg:this.long, imageURL: ImageData};
+file = {imageURL:ImageData};
   constructor( public restProvider: RestProvider, public navCtrl: NavController, public navParams: NavParams, public app: App,public geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public toaster: ToastController,private camera: Camera) {
     
   }
-
-submit(){
-  let _id: any;
-    this.restProvider.addComplaint(this.
-      complaintdetails).then((result) => {
  //sample to pass data to another page, this is working
   // _id = this.navParams.get('id_');
   // console.log(_id);
+submit(){
+  // let _id: any;
+    this.restProvider.addComplaint(this.complaint,this.file).then((result) => {
   console.log(result);
 }, (err) => {
   console.log(err);
@@ -73,7 +74,9 @@ submit(){
        this.imageURL = imageData
         this.geolocation.getCurrentPosition().then((resp) => {
     this.lat= resp.coords.latitude
+    // this.lattt = this.lat;
     this.long=resp.coords.longitude
+    // this.longgg = this.long;
     console.log(this.lat);
     console.log(this.long);
      }).catch((error) => {

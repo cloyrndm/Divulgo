@@ -25,8 +25,8 @@ export class RestProvider {
   // apiUrl2 = 'http://172.17.3.87:8080/apithree';
 
   //testing purposes
-  apiUrl = 'http://172.20.10.10:8080/apitwo';
-  apiUrl2 = 'http://172.20.10.10:8080/apithree';
+  apiUrl = 'http://192.168.1.14:8080/apitwo';
+  apiUrl2 = 'http://192.168.1.14:8080/apithree';
   iddd:any;
   constructor(public http: HttpClient,private alertCtrl: AlertController) {
     console.log('Hello RestProvider Provider');
@@ -46,10 +46,10 @@ export class RestProvider {
   }
   
 //Submit Complaint
-  addComplaint(data) {
+  addComplaint(data,file) {
     return new Promise((resolve, reject) => {
       console.log('Got inside the addUser');
-      this.http.post(this.apiUrl+'/complaints', data)
+      this.http.post(this.apiUrl+'/upload', data,file)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
