@@ -1,4 +1,4 @@
-<!-- <ion-header>
+<ion-header>
     <ion-toolbar>
         <ion-segment [(ngModel)]="complaint">
             <ion-segment-button value="scomplaints">
@@ -12,19 +12,20 @@
             </ion-segment-button>
         </ion-segment>
     </ion-toolbar>
-</ion-header> -->
+</ion-header>
 
 <ion-content>
-    <!-- <div [ngSwitch]="complaint">
-        <ion-list *ngSwitchCase="'scomplaints'"> -->
+    <div [ngSwitch]="complaint">
+        <ion-list *ngSwitchCase="'scomplaints'">
                 <img src="assets/divulgo.png" style="width:180px;height:180px;" id="center">
             <form (ngSubmit)="submit()">
 
                 <ion-item>
                     <ion-label color="textcolor" stacked>Complaint</ion-label>
-                    <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="complaint.user_complaint" name="complaint"></ion-textarea>
-                    <!-- <ion-textarea rows="4" cols="27" id="txtarea" name="complaint"></ion-textarea> -->
-                    <!-- <ion-input rows="4" cols="27" id="txtarea" name="complaint"></ion-input> -->
+                    <!-- <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="complaint.user_complaint" name="complaint"></ion-textarea>
+                    <ion-textarea rows="4" cols="27" id="txtarea" name="complaint"></ion-textarea> 
+                    <ion-input rows="4" cols="27" id="txtarea" name="complaint"></ion-input> -->
+                    <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="ucomplaint" name="ucomplaint"></ion-textarea>
                 </ion-item>
 
                 <ion-item>
@@ -39,8 +40,8 @@
                 <hr>
                 <button ion-button block outline color="textcolor" type="submit">Submit</button>
             </form>
-        <!-- </ion-list> -->
-<!-- 
+       </ion-list>
+
         <ion-list *ngSwitchCase="'vcomplaints'">
             <ion-item *ngFor ="let complaint of complaints">
                 <p>{{complaint.user_complaint}}</p>
@@ -52,5 +53,5 @@
                 <button ion-button block outline color="textcolor" (click)="logout();">Logout</button>
             </ion-item>
         </ion-list>
-    </div> -->
+    </div> 
 </ion-content>

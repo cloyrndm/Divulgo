@@ -22,12 +22,10 @@ interface UserResponse {
 }
 @Injectable()
 export class RestProvider {
-  // apiUrl = 'http://172.17.3.87:8080/apitwo';
-  // apiUrl2 = 'http://172.17.3.87:8080/apithree';
 
   //testing purposes
-  apiUrl = 'http://172.20.10.11:8080/apitwo';
-  apiUrl2 = 'http://172.20.10.11:8080/apithree';
+  apiUrl = 'http://192.168.1.8:8080/apitwo';
+  apiUrl2 = 'http://192.168.1.8:8080/apithree';
   iddd:any;
   constructor(public http: HttpClient,private alertCtrl: AlertController,private transfer: FileTransfer) {
     console.log('Hello RestProvider Provider');
@@ -45,23 +43,7 @@ export class RestProvider {
         });
     });
   }
-
-  //
-  // uploadPhoto(imageFileUri: any): void {
-  //   // this.error = null;
-  //   // this.loading = this.loadingCtrl.create({
-  //   //   content: 'Uploading...'
-  //   // });
-
-  //   // this.loading.present();
-
-  //   this.file.resolveLocalFilesystemUrl(imageFileUri)
-  //     .then(entry => (<FileEntry>entry).file(file => this.readFile(file)))
-  //     .catch(err => console.log(err));
-  // }
   
-
-
 //login uawe
   login(user:any){
     let userid:any;
