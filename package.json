@@ -60,7 +60,9 @@
       "cordova-plugin-camera": {},
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "com.googleusercontent.apps.987333508972-36b3laemupi6biqbc1mthlp604rushu5"
-      }
+      },
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {}
     },
     "platforms": [
       "android"

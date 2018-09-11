@@ -25,9 +25,6 @@ export class RegisterPage {
   }
 
   register(){
-
-    
-
       this.restProvider.addUser(this.user).then((result) => {
     console.log(result);
   }, (err) => {

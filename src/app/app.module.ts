@@ -8,7 +8,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { HttpClientModule } from '@angular/common/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { GooglePlus } from '@ionic-native/google-plus';
-
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 import { RestProvider } from '../providers/rest/rest';
 import { MyApp } from './app.component';
@@ -48,7 +49,10 @@ import {MainPage} from '../pages/main/main';
     Geolocation,
     GooglePlus,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider
+    RestProvider,
+    FileTransfer,
+    FileTransferObject,
+    File
   ]
 })
 export class AppModule {}

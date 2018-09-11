@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 import { AlertController } from 'ionic-angular';
-
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { dateValueRange } from '../../../node_modules/ionic-angular/umd/util/datetime-util';
 /*
   Generated class for the RestProvider provider.
 
@@ -25,10 +26,10 @@ export class RestProvider {
   // apiUrl2 = 'http://172.17.3.87:8080/apithree';
 
   //testing purposes
-  apiUrl = 'http://192.168.1.14:8080/apitwo';
-  apiUrl2 = 'http://192.168.1.14:8080/apithree';
+  apiUrl = 'http://172.20.10.11:8080/apitwo';
+  apiUrl2 = 'http://172.20.10.11:8080/apithree';
   iddd:any;
-  constructor(public http: HttpClient,private alertCtrl: AlertController) {
+  constructor(public http: HttpClient,private alertCtrl: AlertController,private transfer: FileTransfer) {
     console.log('Hello RestProvider Provider');
   }
 
@@ -44,19 +45,22 @@ export class RestProvider {
         });
     });
   }
+
+  //
+  // uploadPhoto(imageFileUri: any): void {
+  //   // this.error = null;
+  //   // this.loading = this.loadingCtrl.create({
+  //   //   content: 'Uploading...'
+  //   // });
+
+  //   // this.loading.present();
+
+  //   this.file.resolveLocalFilesystemUrl(imageFileUri)
+  //     .then(entry => (<FileEntry>entry).file(file => this.readFile(file)))
+  //     .catch(err => console.log(err));
+  // }
   
-//Submit Complaint
-  addComplaint(data,file) {
-    return new Promise((resolve, reject) => {
-      console.log('Got inside the addUser');
-      this.http.post(this.apiUrl+'/upload', data,file)
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
-  }
+
 
 //login uawe
   login(user:any){
@@ -96,5 +100,4 @@ export class RestProvider {
     });
   }
     }
-
 
