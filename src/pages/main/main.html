@@ -1,3 +1,62 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="complaint">
+            <ion-segment-button value="scomplaints">
+                Send 
+            </ion-segment-button>
+            <ion-segment-button value="vcomplaints" (click)="getComplaints();">
+                View
+            </ion-segment-button>
+            <ion-segment-button value="settings">
+                Settings
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div [ngSwitch]="complaint">
+        <ion-list *ngSwitchCase="'scomplaints'">
+                <img src="assets/divulgo.png" style="width:180px;height:180px;" id="center">
+            <form [formGroup]="complaintForm" (ngSubmit)="submit()">
+
+                <ion-item>
+                    <ion-label color="textcolor" stacked>Complaint</ion-label>
+                    <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="ucomplaint" name="ucomplaint"></ion-textarea>
+                </ion-item>
+
+                <ion-item>
+                    <input type="hidden" value="Cebu City">
+                    <ion-label color="textcolor" stacked>Location: {{ lat }} , {{ long }}</ion-label>
+                </ion-item>
+
+                <button ion-button clear icon-only (click)="takePhoto()" id="cambtn">
+                    <ion-icon name="md-camera"></ion-icon>
+                </button>
+                <img [src]="base64Image" *ngIf="base64Image" />
+                <hr>
+                <button ion-button block outline color="textcolor" type="submit">Submit</button>
+            </form>
+       </ion-list>
+
+        <ion-list *ngSwitchCase="'vcomplaints'">
+         <ion-title text-center id="title2ndpage">Sent Complaints</ion-title>
+         <hr>
+            <ion-item *ngFor ="let complaint of complaints">
+            <div text-left>Date: {{ complaint.date }}</div>
+            <div text-left>Time: {{ complaint.time }}</div>
+            <div text-left>Complaint: {{complaint.user_complaint}}</div>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'settings'">
+            <ion-item>
+                <button ion-button block outline color="textcolor" (click)="logout();">Logout</button>
+            </ion-item>
+        </ion-list>
+    </div> 
+</ion-content> -->
+
 <ion-header>
     <ion-toolbar>
         <ion-segment [(ngModel)]="complaint">
@@ -22,9 +81,6 @@
 
                 <ion-item>
                     <ion-label color="textcolor" stacked>Complaint</ion-label>
-                    <!-- <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="complaint.user_complaint" name="complaint"></ion-textarea>
-                    <ion-textarea rows="4" cols="27" id="txtarea" name="complaint"></ion-textarea> 
-                    <ion-input rows="4" cols="27" id="txtarea" name="complaint"></ion-input> -->
                     <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="ucomplaint" name="ucomplaint"></ion-textarea>
                 </ion-item>
 
@@ -43,8 +99,12 @@
        </ion-list>
 
         <ion-list *ngSwitchCase="'vcomplaints'">
+ <ion-title text-center id="title2ndpage">Sent Complaints</ion-title>
+         <hr>
             <ion-item *ngFor ="let complaint of complaints">
-                <p>{{complaint.user_complaint}}</p>
+            <div text-left>Date: {{ complaint.date }}</div>
+            <div text-left>Time: {{ complaint.time }}</div>
+            <div text-left>Complaint: {{complaint.user_complaint}}</div>
             </ion-item>
         </ion-list>
 

@@ -45,33 +45,21 @@ export class HomePage {
 
   }
     
-  
-
-  doGoogleLogin(){
-    // let nav = this.navCtrl;
-    // let env = this;
-
-    this.googlePlus.login({
-      'webClientId': '987333508972-p1u4lmmeltk397tcmbtjsmmfgqtkc3hs.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
-    })
-    .then(function (user) {
-        this.RestProvider.addUser('user', {
-           first_name: user.givenName,
-           last_name: user.familyName,
+doGoogleLogin(){
+ this.googlePlus.login({})
+      .then(res => {
+this.restProvider.addUser({
+           first_name: res.givenName,
+           last_name: res.familyName,
            username: "none",
-           email: user.email,
-           password: "none",
+           email: res.email,
+           password: "none"
          })
-         .then(res=>{
-          this.navCtrl.push(MainPage);
-        }, function (error) {
-          console.log(error);
-        })
-      }, function (error) {
-        console.log(error);
-      });
-  
-    }
+         this.navCtrl.push(MainPage);
+      })
+      .catch(err => console.error(err));
+}
+
     ///do not edit below this line
   }
     

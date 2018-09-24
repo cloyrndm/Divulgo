@@ -39,13 +39,42 @@ export class RestProvider {
         .subscribe(res => {
           resolve(res);
         }, (err) => {
-          reject(err);
+        let alert = this.alertCtrl.create({
+        title: 'Login Error',
+        subTitle: 'Email Or Username not available',
+        buttons: ['Okay']
+        });
+        alert.present();
         });
     });
   }
   
 //login uawe
   login(user:any){
+    let userid:any;
+    return new Promise(resolve =>{ this.http.post<UserResponse>(this.apiUrl+'/login', user)
+    .subscribe(data =>{
+      console.log(data);    
+      resolve(data);
+      //sample
+      userid=data.id;
+      console.log("before the userid");
+      this.iddd = userid;
+      console.log(userid);
+      resolve(userid);
+      // resolve(data.id);
+    },err=>{
+      let alert = this.alertCtrl.create({
+        title: 'Login Error',
+        subTitle: 'Incorrect Useranme And Password',
+        buttons: ['Okay']
+      });
+      alert.present();
+    })
+  })
+  }
+
+    googlelogin(user:any){
     let userid:any;
     return new Promise(resolve =>{ this.http.post<UserResponse>(this.apiUrl+'/login', user)
     .subscribe(data =>{

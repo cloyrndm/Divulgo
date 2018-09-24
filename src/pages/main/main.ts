@@ -6,6 +6,8 @@ import {HomePage} from '../home/home';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { RestProvider } from '../../providers/rest/rest';
 
+// import {MainPage} from '../main/main';
+
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Platform } from 'ionic-angular';
@@ -46,12 +48,14 @@ longgg: any;
 s: any;
 c: any;
 ucomplaint:string;
+// complaintForm:any;
+complaint:string;
    apiUrl2 = 'http://192.168.1.8:8080/apithree';
 complaints:any;
 // complaint = {user_complaint: ''};
 
-  constructor( public restProvider: RestProvider, public navCtrl: NavController, public navParams: NavParams, public app: App,public geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public toaster: ToastController,private camera: Camera,private transfer: FileTransfer,public http: HttpClient,public platform: Platform) {
-    
+  constructor(public restProvider: RestProvider, public navCtrl: NavController, public navParams: NavParams, public app: App,public geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public toaster: ToastController,private camera: Camera,private transfer: FileTransfer,public http: HttpClient,public platform: Platform) {
+    this.complaint ="scomplaints";
   }
 
 submit(){
@@ -74,6 +78,18 @@ submit(){
         }, err => {
         console.log("error")
         });
+        this.ucomplaint="";
+        this.lat="";
+        this.long="";
+        this.base64Image="";
+
+        const toast = this.toaster.create({
+        message: 'Complaint added successfully',
+        duration: 3000
+        });
+        toast.present();
+        // this.navCtrl.push(MainPage);
+        // this.complaintForm.reset();
 
 }
 
