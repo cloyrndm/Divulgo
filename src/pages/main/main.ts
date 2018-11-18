@@ -51,7 +51,7 @@ ucomplaint:string;
 agency:any;
 // complaintForm:any;
 complaint:string;
-   apiUrl2 = 'http://172.30.5.80:8080/apithree';
+   apiUrl2 = 'http://192.168.1.9:8080/apithree';
 complaints:any;
 // complaint = {user_complaint: ''};
 
