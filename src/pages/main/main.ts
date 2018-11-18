@@ -48,9 +48,10 @@ longgg: any;
 s: any;
 c: any;
 ucomplaint:string;
+agency:any;
 // complaintForm:any;
 complaint:string;
-   apiUrl2 = 'http://192.168.1.8:8080/apithree';
+   apiUrl2 = 'http://172.30.5.80:8080/apithree';
 complaints:any;
 // complaint = {user_complaint: ''};
 
@@ -70,27 +71,24 @@ submit(){
       chunkedMode: false,
       mimeType: "image/jpeg",
       params: { "user_id":this.navParams.get('id_'),"user_complaint":this.ucomplaint,"lat":this.lat,"long":this.long }
+      // params: { "user_id":this.navParams.get('id_'),"user_complaint":this.ucomplaint,"lat":"1.12341","long":"1.231244","agency":"SSS"}
     };
 
  const fileTransfer: FileTransferObject = this.transfer.create();
         fileTransfer.upload(this.base64Image,this.apiUrl2+"/upload",options).then(data => {
-        console.log("success")
-        }, err => {
-        console.log("error")
-        });
         this.ucomplaint="";
         this.lat="";
         this.long="";
         this.base64Image="";
-
         const toast = this.toaster.create({
         message: 'Complaint added successfully',
         duration: 3000
         });
         toast.present();
-        // this.navCtrl.push(MainPage);
-        // this.complaintForm.reset();
-
+        console.log("success")
+        }, err => {
+        console.log("error")
+        }); 
 }
 
 
@@ -107,18 +105,16 @@ submit(){
    
     this.camera.getPicture(options).then((imageData) => {
       this.base64Image = "data:image/jpeg;base64," + imageData;
-      // this.base64Image =imageData;
       this.geolocation.getCurrentPosition().then((resp) => {
       this.lat= resp.coords.latitude
       this.long=resp.coords.longitude
-
-       }).catch((error) => {
+      // console.log(this.lat);
+      // console.log(this.long);
+        }).catch((error) => {
          console.log('Error getting location', error);
        });
-
-
-      
     });
+
   }
 
   getComplaints(){

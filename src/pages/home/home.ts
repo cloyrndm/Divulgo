@@ -55,9 +55,17 @@ this.restProvider.addUser({
            email: res.email,
            password: "none"
          })
-         this.navCtrl.push(MainPage);
       })
-      .catch(err => console.error(err));
+      .catch((error) => {
+        let alert = this.alertCtrl.create({
+        title: 'Login Error',
+        subTitle: 'Email already used',
+        buttons: ['Okay']
+      });
+      alert.present();
+      });
+      this.navCtrl.push(MainPage);
+
 }
 
     ///do not edit below this line
