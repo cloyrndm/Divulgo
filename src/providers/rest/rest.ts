@@ -24,8 +24,8 @@ interface UserResponse {
 export class RestProvider {
 
   //testing purposes
-  apiUrl = 'http://192.168.1.9:8080/apitwo';
-  apiUrl2 = 'http://192.168.1.9:8080/apithree';
+  apiUrl = 'http://192.168.1.14:8080/apitwo';
+  apiUrl2 = 'http://192.168.1.14:8080/apithree';
   iddd:any;
   constructor(public http: HttpClient,private alertCtrl: AlertController,private transfer: FileTransfer) {
     console.log('Hello RestProvider Provider');
@@ -104,6 +104,19 @@ export class RestProvider {
     console.log("getcomplaints id"+this.iddd);
     return new Promise(resolve => {
       this.http.get(this.apiUrl2+'/complaints/'+this.iddd).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  //get replies
+  getReplies() {
+    // console.log("This is the get complaints");
+    // console.log("getcomplaints id"+this.iddd);
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl2+'/replies/'+this.iddd).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

@@ -1,26 +1,25 @@
 {
   "name": "divulgo",
-  "app_id": "",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "proxies": [
     {
-      "path":"/users",
-      "proxyUrl":"http://192.168.1.9:8080/apitwo/users"
+      "path": "/users",
+      "proxyUrl": "http://192.168.1.14:8080/apitwo/users"
     },
     {
-      "path":"/upload",
-      "proxyUrl":"http://192.168.1.9:8080/apithree/upload"
+      "path": "/upload",
+      "proxyUrl": "http://192.168.1.14:8080/apithree/upload"
     },
     {
-      "path":"/login",
-      "proxyUrl":"http://192.168.1.9:8080/apitwo/login"
+      "path": "/login",
+      "proxyUrl": "http://192.168.1.14:8080/apitwo/login"
     },
     {
-      "path":"/complaints/{user_id}",
-      "proxyUrl":"http://192.168.1.9:8080/apitwo/complaints/{user_id}"
+      "path": "/complaints/{user_id}",
+      "proxyUrl": "http://192.168.1.14:8080/apitwo/complaints/{user_id}"
     }
-  ],
-  "integrations": {
-    "cordova": {}
-  }
+  ]
 }
