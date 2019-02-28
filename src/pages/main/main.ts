@@ -37,6 +37,9 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'main.html',
 })
 export class MainPage {
+status:false;
+// status:any;
+// status:b
 imageData: any;
 public base64Image: string;
 imageFileName:any;
@@ -63,10 +66,10 @@ s: any;
 c: any;
 ucomplaint:string;
 agency:any;
-status:any;
+// status:any;
 // complaintForm:any;
 complaint:string;
-   apiUrl2 = 'http://192.168.1.14:8080/apithree';
+   apiUrl2 = 'http://172.30.5.166:8080/apithree';
 complaints:any;
 replies:any;
 // statement
@@ -84,13 +87,45 @@ replies:any;
   }
 
 
-checkboxClick(){
-status = "anonymous"
-}
+// checkboxClick(){
+// this.status = "anonymous"
+// }
 
 
 submit(){
-if(status=="anonymous"){
+// if(status=="anonymous"){
+//   var d = new Date(),
+//   n = d.getTime(),
+//   newFileName =  n + ".jpg";
+
+//    var options: FileUploadOptions = {
+//       fileName: newFileName,
+//       fileKey: 'ionicfile',
+//       chunkedMode: false,
+//       mimeType: "image/jpeg",
+//       params: { "user_id":0,"user_complaint":this.ucomplaint,"lat":this.lat,"long":this.long,"address":this.address}
+//       // params: { "user_id":this.navParams.get('id_'),"user_complaint":this.ucomplaint,"lat":"1.12341","long":"1.231244","agency":"SSS"}
+//     };
+
+//  const fileTransfer: FileTransferObject = this.transfer.create();
+//         fileTransfer.upload(this.base64Image,this.apiUrl2+"/upload",options).then(data => {
+//         this.ucomplaint="";
+//         this.lat="";
+//         this.long="";
+//         this.address="";
+//         this.base64Image="";
+//         const toast = this.toaster.create({
+//         message: 'Complaint added successfully',
+//         duration: 3000
+//         });
+//         toast.present();
+//         console.log("success")
+//         }, err => {
+//         console.log("error")
+//         }); 
+// }
+// else{
+// status: false;
   var d = new Date(),
   n = d.getTime(),
   newFileName =  n + ".jpg";
@@ -100,7 +135,7 @@ if(status=="anonymous"){
       fileKey: 'ionicfile',
       chunkedMode: false,
       mimeType: "image/jpeg",
-      params: { "user_id":0,"user_complaint":this.ucomplaint,"lat":this.lat,"long":this.long,"address":this.address}
+      params: { "user_id":this.navParams.get('id_'),"user_complaint":this.ucomplaint,"lat":this.lat,"long":this.long,"address":this.address,"stat":this.status}
       // params: { "user_id":this.navParams.get('id_'),"user_complaint":this.ucomplaint,"lat":"1.12341","long":"1.231244","agency":"SSS"}
     };
 
@@ -111,37 +146,7 @@ if(status=="anonymous"){
         this.long="";
         this.address="";
         this.base64Image="";
-        const toast = this.toaster.create({
-        message: 'Complaint added successfully',
-        duration: 3000
-        });
-        toast.present();
-        console.log("success")
-        }, err => {
-        console.log("error")
-        }); 
-}
-else{
-  var d = new Date(),
-  n = d.getTime(),
-  newFileName =  n + ".jpg";
-
-   var options: FileUploadOptions = {
-      fileName: newFileName,
-      fileKey: 'ionicfile',
-      chunkedMode: false,
-      mimeType: "image/jpeg",
-      params: { "user_id":this.navParams.get('id_'),"user_complaint":this.ucomplaint,"lat":this.lat,"long":this.long,"address":this.address}
-      // params: { "user_id":this.navParams.get('id_'),"user_complaint":this.ucomplaint,"lat":"1.12341","long":"1.231244","agency":"SSS"}
-    };
-
- const fileTransfer: FileTransferObject = this.transfer.create();
-        fileTransfer.upload(this.base64Image,this.apiUrl2+"/upload",options).then(data => {
-        this.ucomplaint="";
-        this.lat="";
-        this.long="";
-        this.address="";
-        this.base64Image="";
+        this.status;
         const toast = this.toaster.create({
         message: 'Complaint added successfully',
         duration: 3000
@@ -152,7 +157,7 @@ else{
         console.log("error")
         }); 
 // }
-}
+// }
 }
 
 
@@ -224,7 +229,6 @@ this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, 
 //    });
 // }
 
-
   getComplaints(){
     this.restProvider.getComplaints()
     .then(data => {
@@ -249,6 +253,4 @@ this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, 
     const root = this.app.getRootNav();
 	  root.popToRoot();
   }
-
-
 }

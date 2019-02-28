@@ -28,6 +28,7 @@
                     <ion-label color="textcolor" stacked>Complaint</ion-label>
                     <ion-textarea rows="4" cols="27" id="txtarea" [(ngModel)]="ucomplaint" name="ucomplaint"></ion-textarea>
                 </ion-item>
+                <!-- <ion-checkbox ng-model = "checkboxModel.value1">Checkbox 1</ion-checkbox> -->
 
                 <ion-item>
                     <!-- <input type="hidden" value="Cebu City"> -->
@@ -42,16 +43,16 @@
                     <ion-label color="textcolor" stacked>Readable: {{strt7}} </ion-label>
                     <ion-label color="textcolor" stacked>Readable: {{strt8}} </ion-label> -->
                 </ion-item>
-<!--                 
+                
                 <ion-item>
                     <ion-label>Remain Anonymous</ion-label>
-                    <ion-checkbox [(ngModel)]="status"></ion-checkbox>
-                </ion-item> -->
+                    <ion-checkbox [(ngModel)]="status" name="status"></ion-checkbox>
+                </ion-item>
 
-                 <ion-item>
+                 <!-- <ion-item>
                     <ion-label>Remain Anonymous</ion-label>
-                    <ion-checkbox (ionChange)="checkboxClick()" checked></ion-checkbox>
-                 </ion-item>
+                    <ion-checkbox (ionChange)="checkboxClick()"></ion-checkbox>
+                 </ion-item> -->
             
                 <button ion-button clear icon-only (click)="takePhoto()" id="cambtn">
                     <ion-icon name="md-camera"></ion-icon>

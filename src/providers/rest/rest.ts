@@ -24,8 +24,8 @@ interface UserResponse {
 export class RestProvider {
 
   //testing purposes
-  apiUrl = 'http://192.168.1.14:8080/apitwo';
-  apiUrl2 = 'http://192.168.1.14:8080/apithree';
+  apiUrl = 'http://172.30.5.166:8080/apitwo';
+  apiUrl2 = 'http://172.30.5.166:8080/apithree';
   iddd:any;
   constructor(public http: HttpClient,private alertCtrl: AlertController,private transfer: FileTransfer) {
     console.log('Hello RestProvider Provider');
